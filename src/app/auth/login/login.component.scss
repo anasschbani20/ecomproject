@@ -1,0 +1,53 @@
+@import "src/app/app.component";
+
+.top-container{
+  height: 100vh;
+  width: 100%;
+  background-image: url('/assets/images/auth_bg.jpg');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .form-bloc{
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px #d3d3d373;
+    padding: 20px;
+    max-width: 90%;
+    width: 30%;
+    .logo-container{
+      width: 90%;
+      min-width: 400px;
+      margin: 20px auto;
+      .logo{
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+    .row{
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      .input-group{
+        display: flex;
+        flex-direction: column;
+        *{
+          width: 100%;
+        }
+        input{
+          min-height: 40px;
+          font-size: 12px;
+          border-radius: 5px;
+        }
+      }
+    }
+    .submit-bloc{
+      margin-top: 30px;
+      button{
+        border-radius: 50px;
+        background-color: $primary_color;
+        min-height: 45px;
+      }
+    }
+  }
+}
