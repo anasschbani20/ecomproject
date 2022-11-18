@@ -1,0 +1,13 @@
+<div class="top-container container">
+  <h1>Our categories</h1>
+  <div class="cards row">
+    <div class="col-4" *ngFor="let category of categories">
+      <div class="card" [ngStyle]="{'backgroundImage': 'url('+category.photo+')'}">
+        <div class="overlay">
+          <h3>{{category.name}}</h3>
+          <div class="text">{{category.slug}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

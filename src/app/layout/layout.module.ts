@@ -7,6 +7,9 @@ import { ProductsComponent } from './products/products.component';
 import { OneproductComponent } from './oneproduct/oneproduct.component';
 import { OnecategoryComponent } from './onecategory/onecategory.component';
 import { MainComponent } from './main/main.component';
+import { HeaderComponent } from './header/header.component';
+import { CoverComponent } from './cover/cover.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { MainComponent } from './main/main.component';
     ProductsComponent,
     OneproductComponent,
     OnecategoryComponent,
-    MainComponent
+    MainComponent,
+    HeaderComponent,
+    CoverComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,

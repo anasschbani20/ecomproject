@@ -49,6 +49,9 @@ export class UserService  {
   }
 
 
+  getConnectedUser(){
+    return this.connectedUSer;
+  }
 
 
 }
