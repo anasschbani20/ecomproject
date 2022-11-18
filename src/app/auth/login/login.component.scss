@@ -51,3 +51,15 @@
     }
   }
 }
+
+.form-control-feedback{
+  font-size: 12px;
+  color: red;
+}
+
+.link{
+  color: $primary_color;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 12px;
+}

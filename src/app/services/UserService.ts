@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
 import {ApiService} from "./api.service";
+import {JwtService} from "./Jwt.service";
 
 @Injectable({ providedIn: 'root' })
 export class UserService  {
@@ -16,33 +17,35 @@ export class UserService  {
   // v1/manager/users/delete
   // v1/manager/users/update
   connectedUSer = null;
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private jwtService: JwtService) { }
 
   async populate() {
     try{
       this.connectedUSer = null;
       const res: any = await this.apiService.get('auth/getAuthenticatedUser').toPromise();
-      this.connectedUSer = res.result.data;
-      console.log('populate', res, this.connectedUSer);
-      return this.connectedUSer;
+      if(res.result?.data){
+        this.connectedUSer = res.result.data.user;
+        this.jwtService.saveToken(res.result.data.token);
+      }
     }catch (e) {
       console.log(e);
-    }finally {
-
     }
-    return null;
+    return this.connectedUSer;
   }
 
   async login(params: any) {
     try{
       this.connectedUSer = null;
-      const res: any = this.apiService.post('auth/signin', params).toPromise();
-      this.connectedUSer = res.result.data;
+      const res: any = await this.apiService.post('auth/signin', params).toPromise();
+      console.log('login', res);
+      if(res.result?.data){
+        this.connectedUSer = res.result.data.user;
+        this.jwtService.saveToken(res.result.data.token);
+      }
     }catch (e) {
       console.log(e);
-    }finally {
-
     }
+    return this.connectedUSer;
   }
 
 
