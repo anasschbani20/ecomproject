@@ -1,1 +1,71 @@
-<p>onecategory works!</p>
+<div class="modal-header">
+  <h3>{{!category ? 'Add a new category': 'Edit category'}}</h3>
+  <i class="fa fa-times" (click)="modal.close()"></i>
+</div>
+<form [formGroup]="formGroup">
+  <div class="modal-body form-bloc">
+    <div class="row">
+      <div class="input-group">
+        <label>Name</label>
+        <input type="text"
+               class="form-control"
+               placeholder="Type your email"
+               [ngClass]="{'is-invalid error-input':
+                                   formGroup.controls['name'].hasError('required')
+                                      && formGroup.controls['name'].dirty}"
+               [formControl]="formGroup.controls['name']"
+        />
+      </div>
+      <div class="form-control-feedback" *ngIf="formGroup.get('name')?.hasError('required') && formGroup.get('name')?.dirty">
+        The name is required
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label>Description</label>
+        <textarea type="text"
+               class="form-control"
+               placeholder="Type a description"
+               [ngClass]="{'is-invalid error-input':
+                                   formGroup.controls['slug'].hasError('required')
+                                      && formGroup.controls['slug'].dirty}"
+               [formControl]="formGroup.controls['slug']"
+        ></textarea>
+      </div>
+      <div class="form-control-feedback" *ngIf="formGroup.get('slug')?.hasError('required') && formGroup.get('slug')?.dirty">
+        The description is required
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label>Photo</label>
+        <input type="text"
+               class="form-control"
+               placeholder="Photo link"
+               [ngClass]="{'is-invalid error-input':
+                                   formGroup.controls['photo'].hasError('required')
+                                      && formGroup.controls['photo'].dirty}"
+               [formControl]="formGroup.controls['photo']"
+        />
+      </div>
+    </div>
+    <div class="photo-preview" *ngIf="formGroup.controls['photo']?.value"
+      [ngStyle]="{'background-image': 'url(' + formGroup.controls['photo'].value + ')'}">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="submit-button">
+      <button class="btn btn-secondary"
+              (click)="modal.close()"
+      >
+        Close
+      </button>&nbsp;&nbsp;
+      <button class="btn btn-primary"
+              [disabled]="submitting"
+              (click)="!category ? submit(): submitEditCategory()"
+      >
+        {{!category ? 'Save': 'Save Changes'}}
+      </button>
+    </div>
+  </div>
+</form>

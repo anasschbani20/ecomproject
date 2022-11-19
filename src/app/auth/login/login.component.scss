@@ -24,31 +24,6 @@
         width: 100%;
       }
     }
-    .row{
-      margin: 20px 0;
-      display: flex;
-      align-items: center;
-      .input-group{
-        display: flex;
-        flex-direction: column;
-        *{
-          width: 100%;
-        }
-        input{
-          min-height: 40px;
-          font-size: 12px;
-          border-radius: 5px;
-        }
-      }
-    }
-    .submit-bloc{
-      margin-top: 30px;
-      button{
-        border-radius: 50px;
-        background-color: $primary_color;
-        min-height: 45px;
-      }
-    }
   }
 }
 

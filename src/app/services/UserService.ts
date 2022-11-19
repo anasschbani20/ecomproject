@@ -16,7 +16,7 @@ export class UserService  {
   // v1/manager/users/add
   // v1/manager/users/delete
   // v1/manager/users/update
-  connectedUSer = null;
+  connectedUSer: any = null;
   constructor(private apiService: ApiService, private jwtService: JwtService) { }
 
   async populate() {

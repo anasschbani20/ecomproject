@@ -1,11 +1,31 @@
 <div class="top-container container">
-  <h1>Our categories</h1>
+  <div class="header">
+    <h1>Our categories</h1>
+    <button class="btn btn-secondary" (click)="addNewCategory()">
+      <i class="fa fa-plus"></i>&nbsp;&nbsp;
+      Add a new Category
+    </button>
+  </div>
   <div class="cards row">
     <div class="col-4" *ngFor="let category of categories">
       <div class="card" [ngStyle]="{'backgroundImage': 'url('+category.photo+')'}">
         <div class="overlay">
           <h3>{{category.name}}</h3>
           <div class="text">{{category.slug}}</div>
+          <div class="footer-btns">
+            <button
+              class="btn btn-primary"
+              (click)="addNewCategory(category)"
+            >
+              <i class="fa fa-pencil"></i>
+            </button>&nbsp;&nbsp;
+            <button
+              class="btn btn-danger"
+              (click)="askDeleteCategory(category)"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>

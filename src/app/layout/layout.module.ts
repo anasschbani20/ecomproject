@@ -10,6 +10,8 @@ import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { CoverComponent } from './cover/cover.component';
 import { CategoriesComponent } from './categories/categories.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { CategoriesComponent } from './categories/categories.component';
   ],
   imports: [
     CommonModule,
-    LayoutRoutingModule
+    LayoutRoutingModule,
+    NgbModule,
+    ReactiveFormsModule
   ]
 })
 export class LayoutModule { }

@@ -18,4 +18,17 @@ export class CategoriesService  {
   getCategories() {
     return this.apiService.get('v1/manager/categories/all');
   }
+
+  addCategory(params: any) {
+    return this.apiService.post('v1/manager/categories/add', params);
+  }
+
+  updateCategory(params: any) {
+    return this.apiService.post('v1/manager/categories/update', params);
+  }
+
+  deleteCategory(params: any) {
+    return this.apiService.post('v1/manager/categories/delete', params);
+  }
+
 }
