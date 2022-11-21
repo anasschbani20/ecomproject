@@ -32,7 +32,7 @@ export class OneproductComponent implements OnInit, AfterViewInit {
       description: [],
       ref: [],
       price: [],
-      availability: [],
+      availability: [1],
       stock: [],
       tva: [],
       photo: []
@@ -110,7 +110,7 @@ export class OneproductComponent implements OnInit, AfterViewInit {
       Swal.fire({
         icon: 'success',
         title: 'Perfect...',
-        text: 'product updated successfully!',
+        text: 'Product updated successfully!',
       });
       // this.modal.close();
     }catch (e){

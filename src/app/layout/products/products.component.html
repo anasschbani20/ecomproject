@@ -7,55 +7,71 @@
     </button>
   </div>
   <div class="cards row">
-    <div class="col-12" *ngFor="let product of products">
-      <div class="card"       >
-        <div class="img-container">
-          <ng-container *ngIf="product.photo; else placeholder">
-            <img src="{{product.photo}}" />
-          </ng-container>
-          <ng-template #placeholder>
-            <div class="placeholder">
-              <img src="assets/images/placeholder.png" />
-            </div>
-          </ng-template>
-        </div>
-        <div class="overlay">
-          <h3>{{product.name}}</h3>
-          <div class="text">
-            <label>Description</label>
-            <span>{{product.description}}</span>
-          </div>
-          <div class="text">
-            <label>Price</label>
-            <span class="price">{{product.price}} $</span>
-          </div>
-          <div class="text">
-            <label>Stock</label>
-            <span>{{product.stock}}</span>
-          </div>
-          <div class="text">
-            <label>Availability</label>
-            <span *ngIf="toNumber(product.availability); else notAvailable" class="price">Available</span>
-            <ng-template #notAvailable>
-              <span class="text-danger">This product is not available in stock for now</span>
-            </ng-template>
-          </div>
-        </div>
-        <div class="footer-btns">
-          <button
-            class="btn btn-primary"
-            [routerLink]="['product/'+product.id]"
-          >
-            <i class="fa fa-pencil"></i>
-          </button>&nbsp;&nbsp;
-          <button
-            class="btn btn-danger"
-            (click)="askDeleteProduct(product)"
-          >
-            <i class="fa fa-trash"></i>
-          </button>
-        </div>
+    <ng-container *ngIf="loadingData; else loadedData">
+      <div class="empty-state">
+        <div>Loading data ..</div>
       </div>
-    </div>
+    </ng-container>
+    <ng-template #loadedData>
+      <ng-container *ngIf="products?.length>0; else emptyState">
+        <div class="col-12" *ngFor="let product of products">
+          <div class="card"       >
+            <div class="img-container">
+              <ng-container *ngIf="product.photo; else placeholder">
+                <img src="{{product.photo}}" />
+              </ng-container>
+              <ng-template #placeholder>
+                <div class="placeholder">
+                  <img src="assets/images/placeholder.png" />
+                </div>
+              </ng-template>
+            </div>
+            <div class="overlay">
+              <h3>{{product.name}}</h3>
+              <div class="text">
+                <label>Description</label>
+                <span>{{product.description}}</span>
+              </div>
+              <div class="text">
+                <label>Price</label>
+                <span class="price">{{product.price}} $</span>
+              </div>
+              <div class="text">
+                <label>Stock</label>
+                <span>{{product.stock}}</span>
+              </div>
+              <div class="text">
+                <label>Availability</label>
+                <span *ngIf="toNumber(product.availability); else notAvailable" class="price">Available</span>
+                <ng-template #notAvailable>
+                  <span class="text-danger">This product is not available in stock for now</span>
+                </ng-template>
+              </div>
+            </div>
+            <div class="footer-btns">
+              <button
+                class="btn btn-primary"
+                [routerLink]="['product/'+product.id]"
+              >
+                <i class="fa fa-pencil"></i>
+              </button>&nbsp;&nbsp;
+              <button
+                class="btn btn-danger"
+                (click)="askDeleteProduct(product)"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-template>
   </div>
 </div>
+
+<ng-template #emptyState>
+  <div class="empty-state">
+    <img src="assets/images/emptystate.png">
+    <div>No product found for the moment in this category</div>
+  </div>
+</ng-template>

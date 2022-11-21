@@ -6,30 +6,48 @@
       Add a new Category
     </button>
   </div>
-  <div class="cards row">
-    <div class="col-4" *ngFor="let category of categories">
-      <div class="card"
-           [ngStyle]="{'backgroundImage': 'url('+category.photo+')'}"
-           [routerLink]="['/products/'+category.id]">
-        <div class="overlay">
-          <h3>{{category.name}}</h3>
-          <div class="text">{{category.slug}}</div>
-          <div class="footer-btns">
-            <button
-              class="btn btn-primary"
-              (click)="addNewCategory(category)"
-            >
-              <i class="fa fa-pencil"></i>
-            </button>&nbsp;&nbsp;
-            <button
-              class="btn btn-danger"
-              (click)="askDeleteCategory(category)"
-            >
-              <i class="fa fa-trash"></i>
-            </button>
+  <ng-container *ngIf="loadingData; else loadedData">
+    <div class="empty-state">
+      <div>Loading data ..</div>
+    </div>
+  </ng-container>
+  <ng-template #loadedData>
+    <ng-container *ngIf="categories?.length>0; else emptyState">
+      <div class="cards row">
+        <div class="col-4" *ngFor="let category of categories">
+          <div class="card"
+               [ngStyle]="{'backgroundImage': 'url('+category.photo+')'}"
+               [routerLink]="['/products/'+category.id]">
+            <div class="overlay">
+              <h3>{{category.name}}</h3>
+              <div class="text">{{category.slug}}</div>
+              <div class="footer-btns">
+                <button
+                  class="btn btn-primary"
+                  (click)="addNewCategory(category)"
+                >
+                  <i class="fa fa-pencil"></i>
+                </button>&nbsp;&nbsp;
+                <button
+                  class="btn btn-danger"
+                  (click)="askDeleteCategory(category)"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </ng-container>
+  </ng-template>
+
 </div>
+
+
+<ng-template #emptyState>
+  <div class="empty-state">
+    <img src="assets/images/emptystate.png">
+    <div>No category found for the moment in this category</div>
+  </div>
+</ng-template>
