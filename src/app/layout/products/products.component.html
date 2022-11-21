@@ -15,10 +15,10 @@
     <ng-template #loadedData>
       <ng-container *ngIf="products?.length>0; else emptyState">
         <div class="col-12" *ngFor="let product of products">
-          <div class="card"       >
-            <div class="img-container">
+          <div class="card" >
+            <div class="img-container" (click)="uploadPhoto()">
               <ng-container *ngIf="product.photo; else placeholder">
-                <img src="{{product.photo}}" />
+                <img src="{{product.photo | getPhoto}}" />
               </ng-container>
               <ng-template #placeholder>
                 <div class="placeholder">

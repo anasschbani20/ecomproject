@@ -1,3 +1,8 @@
+<input type="file" style="display: none" id="uploadPhoto"
+       #inputFile
+       accept="image/jpeg"
+       multiple="false" (change)="filechanged($event); inputFile.value=''"/>
+
 <div class="container top-container">
   <h3>{{!product ? 'Add a new product': 'Edit product'}}</h3>
   <form [formGroup]="formGroup">
@@ -71,16 +76,22 @@
           <div class="row">
             <div class="input-group">
               <label>Photo</label>
-              <input type="text"
-                     class="form-control"
-                     placeholder="Photo link"
-                     [ngClass]="{'is-invalid error-input':
-                                   formGroup.controls['photo'].hasError('required')
-                                      && formGroup.controls['photo'].dirty}"
-                     [formControl]="formGroup.controls['photo']"
-              />
+              <div>
+                <label style="width: fit-content" for="uploadPhoto" class="btn btn-secondary">Upload a photo</label>
+              </div>
+<!--              <input type="text"-->
+<!--                     class="form-control"-->
+<!--                     placeholder="Photo link"-->
+<!--                     [ngClass]="{'is-invalid error-input':-->
+<!--                                   formGroup.controls['photo'].hasError('required')-->
+<!--                                      && formGroup.controls['photo'].dirty}"-->
+<!--                     [formControl]="formGroup.controls['photo']"-->
+<!--              />-->
             </div>
           </div>
+<!--          <div class="row">-->
+<!--            -->
+<!--          </div>-->
           <div class="row">
             <div class="input-group">
               <label>Availability</label>
@@ -97,8 +108,8 @@
         </div>
         <div class="col-6">
           <div class="photo-preview" >
-            <ng-container *ngIf="formGroup.controls['photo']?.value; else placeholder">
-              <img src="{{formGroup.controls['photo']?.value}}" />
+            <ng-container *ngIf="formGroup.controls['photo']?.value || photoBase64; else placeholder">
+              <img [attr.src]="photoBase64?.length>0 ? photoBase64 : (formGroup.controls['photo']?.value | getPhoto)" />
             </ng-container>
             <ng-template #placeholder>
               <div class="placeholder">

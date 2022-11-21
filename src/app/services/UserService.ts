@@ -7,15 +7,22 @@ import {JwtService} from "./Jwt.service";
 @Injectable({ providedIn: 'root' })
 export class UserService  {
 
-  // /auth/signin
-  // /auth/getAuthenticatedUser
-  // /auth/signup
+  // /auth/signin  => POST
+  // 'emailOrUsername' => 'required|string'
+  // 'password' => 'required|string'
+
+  // Demo account:
+  // emailOrUsername: 'kari.haag@example.net',
+  // password: 'password'
+
+  // /auth/getAuthenticatedUser  => GET
 
   // v1/manager/users/all
   // v1/manager/users/get
   // v1/manager/users/add
   // v1/manager/users/delete
   // v1/manager/users/update
+
   connectedUSer: any = null;
   constructor(private apiService: ApiService, private jwtService: JwtService) { }
 

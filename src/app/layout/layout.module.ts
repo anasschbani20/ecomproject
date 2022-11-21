@@ -14,6 +14,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {ReactiveFormsModule} from "@angular/forms";
 import {FooterComponent} from "./footer/footer.component";
 import { ToplayoutComponent } from './toplayout/toplayout.component';
+import {GetPhotoPipe} from "../pipes/GetPhotoPipe";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ToplayoutComponent } from './toplayout/toplayout.component';
     CoverComponent,
     CategoriesComponent,
     FooterComponent,
-    ToplayoutComponent
+    ToplayoutComponent,
+    GetPhotoPipe
   ],
   imports: [
     CommonModule,

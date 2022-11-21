@@ -18,6 +18,7 @@ export class OneproductComponent implements OnInit, AfterViewInit {
   product: any;
   submitting = false;
   formGroup: FormGroup;
+  photoBase64: any;
 
   constructor(private fb: FormBuilder,
               // public modal: NgbActiveModal,
@@ -81,7 +82,14 @@ export class OneproductComponent implements OnInit, AfterViewInit {
   async submit(){
     try{
       this.submitting = true;
-      const res = await this.productsService.addProduct(this.formGroup.value).toPromise();
+      console.log('submitting', this.formGroup.value);
+      const fd = new FormData();
+      Object.keys(this.formGroup.value).forEach((key: any) => {
+        if(this.formGroup.value[key] != null){
+          fd.append(key, this.formGroup.value[key]);
+        }
+      });
+      const res = await this.productsService.addProduct(fd).toPromise();
       console.log('res submit', res);
       Swal.fire({
         icon: 'success',
@@ -105,7 +113,13 @@ export class OneproductComponent implements OnInit, AfterViewInit {
   async submitEditproduct(){
     try{
       this.submitting = true;
-      const res = await this.productsService.updateProduct(this.formGroup.value).toPromise();
+      const fd = new FormData();
+      Object.keys(this.formGroup.value).forEach((key: any) => {
+        if(this.formGroup.value[key] != null){
+          fd.append(key, this.formGroup.value[key]);
+        }
+      });
+      const res = await this.productsService.updateProduct(fd).toPromise();
       console.log('res submit', res);
       Swal.fire({
         icon: 'success',
@@ -127,5 +141,23 @@ export class OneproductComponent implements OnInit, AfterViewInit {
 
   goBack() {
     this.location.back();
+  }
+
+
+  async filechanged(event: any) {
+    console.log('filechanged',  event.target.files[0]);
+    this.formGroup.patchValue({
+      photo: event.target.files[0]
+    });
+    this.photoBase64 = await this.fileToBase64(event.target.files[0]);
+  }
+
+  async fileToBase64 (file: File) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => resolve(reader.result)
+      reader.onerror = (e) => reject(e)
+    });
   }
 }

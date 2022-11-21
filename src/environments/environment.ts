@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://demoshop.upwebapp.com/backend/public/api/',
+  basePhotosUrl: 'https://demoshop.upwebapp.com/backend/public/photos/',
 };
 
 /*

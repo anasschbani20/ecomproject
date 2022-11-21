@@ -88,4 +88,9 @@ export class ProductsComponent implements OnInit {
   toNumber(availability: any) {
     return Number(availability);
   }
+
+  uploadPhoto() {
+
+  }
+
 }
