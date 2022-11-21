@@ -7,10 +7,25 @@ import {ApiService} from "./api.service";
 export class CategoriesService  {
 
   // v1/manager/categories/all
-  // v1/manager/categories/get
-  // v1/manager/categories/add
-  // v1/manager/categories/delete
+
+
+  // v1/manager/categories/get => POST
+  // 'id' => 'required|integer'
+
+  // v1/manager/categories/add => POST
+  // 'name' => 'required|nullable|string'
+  // 'photo' => 'sometimes|nullable',
+  // 'slug' => 'sometimes|nullable|string'
+
+  // v1/manager/categories/delete POST
+  // 'id' => 'required|integer'
+
+
   // v1/manager/categories/update
+  // 'id' => 'required|exists:categories,id',
+  // 'photo' => 'sometimes|nullable',
+  // 'name' => 'sometimes|nullable|string'
+  // 'slug' => 'sometimes|nullable|string'
 
   constructor(private apiService: ApiService) { }
 

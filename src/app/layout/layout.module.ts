@@ -12,6 +12,8 @@ import { CoverComponent } from './cover/cover.component';
 import { CategoriesComponent } from './categories/categories.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {ReactiveFormsModule} from "@angular/forms";
+import {FooterComponent} from "./footer/footer.component";
+import { ToplayoutComponent } from './toplayout/toplayout.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     MainComponent,
     HeaderComponent,
     CoverComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    FooterComponent,
+    ToplayoutComponent
   ],
   imports: [
     CommonModule,

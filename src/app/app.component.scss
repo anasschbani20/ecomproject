@@ -28,3 +28,16 @@ $primary_color: #2057bf;
     }
   }
 }
+
+.btn-primary{
+  background-color: $primary_color;
+}
+
+.btn-green{
+  background-color: #00c853;
+  color: white;
+}
+
+.btn{
+  font-size: 12px;
+}

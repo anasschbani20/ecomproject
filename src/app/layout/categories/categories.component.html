@@ -8,7 +8,9 @@
   </div>
   <div class="cards row">
     <div class="col-4" *ngFor="let category of categories">
-      <div class="card" [ngStyle]="{'backgroundImage': 'url('+category.photo+')'}">
+      <div class="card"
+           [ngStyle]="{'backgroundImage': 'url('+category.photo+')'}"
+           [routerLink]="['/products/'+category.id]">
         <div class="overlay">
           <h3>{{category.name}}</h3>
           <div class="text">{{category.slug}}</div>

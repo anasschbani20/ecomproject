@@ -50,7 +50,7 @@ export class CategoriesComponent implements OnInit {
       this.getCategories();
       Swal.fire({
         icon: 'success',
-        title: 'Oops...',
+        title: 'Perfect...',
         text: 'Category deleted successfully!',
       });
     }catch (e){

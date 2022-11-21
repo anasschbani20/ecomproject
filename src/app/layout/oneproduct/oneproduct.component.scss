@@ -1,0 +1,45 @@
+@import "src/app/app.component";
+
+
+
+.top-container{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  .photo-preview{
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+    .placeholder{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      opacity: .4;
+      background: unset;
+      flex-direction: column;
+      img{
+        height: 50px;
+        max-width: 50px;
+        object-fit: contain;
+      }
+    }
+  }
+  .submit-bloc{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+
+.btn-group-toggle{
+  width: fit-content !important;
+  input{
+    display: none;
+  }
+  label{
+    width: fit-content !important;
+  }
+}

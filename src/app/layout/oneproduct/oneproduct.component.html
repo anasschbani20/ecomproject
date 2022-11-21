@@ -1,1 +1,128 @@
-<p>oneproduct works!</p>
+<div class="container top-container">
+  <h3>{{!product ? 'Add a new product': 'Edit product'}}</h3>
+  <form [formGroup]="formGroup">
+    <div class="form-bloc p-0">
+      <div class="row p-0">
+        <div class="col-6 p-0">
+          <div class="row">
+            <div class="input-group">
+              <label>Name</label>
+              <input type="text"
+                     class="form-control"
+                     placeholder="Type your email"
+                     [ngClass]="{'is-invalid error-input':
+                                   formGroup.controls['name'].hasError('required')
+                                      && formGroup.controls['name'].dirty}"
+                     [formControl]="formGroup.controls['name']"
+              />
+            </div>
+            <div class="form-control-feedback" *ngIf="formGroup.get('name')?.hasError('required') && formGroup.get('name')?.dirty">
+              The name is required
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <label>Price</label>
+              <input type="number"
+                     class="form-control"
+                     placeholder="Type the price"
+                     [ngClass]="{'is-invalid error-input':
+                                   formGroup.controls['price'].hasError('required')
+                                      && formGroup.controls['price'].dirty}"
+                     [formControl]="formGroup.controls['price']"
+              />
+            </div>
+            <div class="form-control-feedback" *ngIf="formGroup.get('price')?.hasError('required') && formGroup.get('price')?.dirty">
+              The price is required
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <label>Stock</label>
+              <input type="number"
+                     class="form-control"
+                     placeholder="Type the stock"
+                     [ngClass]="{'is-invalid error-input':
+                                   formGroup.controls['stock'].hasError('required')
+                                      && formGroup.controls['stock'].dirty}"
+                     [formControl]="formGroup.controls['stock']"
+              />
+            </div>
+            <div class="form-control-feedback" *ngIf="formGroup.get('stock')?.hasError('required') && formGroup.get('stock')?.dirty">
+              The stock is required
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <label>Description</label>
+              <textarea type="text"
+                        class="form-control"
+                        placeholder="Type a description"
+                        [ngClass]="{'is-invalid error-input':
+                                   formGroup.controls['description'].hasError('required')
+                                      && formGroup.controls['description'].dirty}"
+                        [formControl]="formGroup.controls['description']"
+              ></textarea>
+            </div>
+            <div class="form-control-feedback" *ngIf="formGroup.get('description')?.hasError('required') && formGroup.get('description')?.dirty">
+              The description is required
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <label>Photo</label>
+              <input type="text"
+                     class="form-control"
+                     placeholder="Photo link"
+                     [ngClass]="{'is-invalid error-input':
+                                   formGroup.controls['photo'].hasError('required')
+                                      && formGroup.controls['photo'].dirty}"
+                     [formControl]="formGroup.controls['photo']"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <label>Availability</label>
+              <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic"  [formControl]="formGroup.controls['availability']">
+                <label ngbButtonLabel class="btn" [ngClass]="{'btn-green': !formGroup.controls['availability'].value}">
+                  <input ngbButton type="radio" [value]="false"> Not avaialable
+                </label>
+                <label ngbButtonLabel class="btn" [ngClass]="{'btn-green': formGroup.controls['availability'].value}">
+                  <input ngbButton type="radio" [value]="1"> Available in stock
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="photo-preview" >
+            <ng-container *ngIf="formGroup.controls['photo']?.value; else placeholder">
+              <img src="{{formGroup.controls['photo']?.value}}" />
+            </ng-container>
+            <ng-template #placeholder>
+              <div class="placeholder">
+                <img src="assets/images/placeholder.png" />
+                No image found
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="submit-bloc">
+        <button class="btn btn-secondary"
+                (click)="goBack()"
+        >
+          Cancel
+        </button>&nbsp;&nbsp;
+        <button class="btn btn-primary"
+                [disabled]="submitting"
+                (click)="!product ? submit(): submitEditproduct()"
+        >
+          {{!product ? 'Save': 'Save Changes'}}
+        </button>
+      </div>
+  </form>
+</div>

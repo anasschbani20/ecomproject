@@ -47,7 +47,7 @@ export class OnecategoryComponent implements OnInit, AfterViewInit {
       console.log('res submit', res);
       Swal.fire({
         icon: 'success',
-        title: 'Oops...',
+        title: 'Perfect...',
         text: 'Category added successfully!',
       });
       this.modal.close();
@@ -70,7 +70,7 @@ export class OnecategoryComponent implements OnInit, AfterViewInit {
       console.log('res submit', res);
       Swal.fire({
         icon: 'success',
-        title: 'Oops...',
+        title: 'Perfect...',
         text: 'Category updated successfully!',
       });
       this.modal.close();

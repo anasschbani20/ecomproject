@@ -1,0 +1,82 @@
+@import "src/app/app.component";
+
+
+.top-container{
+  .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    h1{
+      text-align: center;
+      padding: 20px 0;
+    }
+    button{
+      background-color: rgba(0, 128, 0, 0.66);
+    }
+  }
+  .cards{
+    .card{
+      height: 150px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: inherit;
+      border-radius: 20px;
+      overflow: hidden;
+      .img-container{
+        width: 20%;
+        height: 100%;
+        //background: #2057bf2e;
+        background: rgb(220,221,222);
+        img{
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+        .placeholder{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          //background: #2057bf2e;
+          background: rgb(220 221 222);
+          opacity: .4;
+          img{
+            height: 50px;
+            max-width: 50px;
+            object-fit: contain;
+          }
+        }
+      }
+      .overlay{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding-left: 30px;
+        .text{
+          font-size: 13px;
+          label{
+            font-weight: 500;
+            display: inline-block;
+            min-width: 80px;
+          }
+          span{
+            font-weight: 300;
+            opacity: .8;
+          }
+          .price{
+            color: green;
+          }
+        }
+      }
+      .footer-btns{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+      }
+    }
+  }
+}
